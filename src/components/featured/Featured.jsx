@@ -1,9 +1,35 @@
 import React from 'react';
 
 import styles from './Featured.module.scss';
+import Image from 'next/image';
 
 const Featured = () => {
-  return <div className={styles.container}>Featured</div>;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>
+        <b>Hey, Blog App here!</b>
+        <br />
+        <span> Discover new stories and creative ideas.</span>
+      </h1>
+      <div className={styles.post}>
+        <div className={styles['img-container']}>
+          <Image src="/p1.jpeg" alt="p1" fill className={styles.image} />
+        </div>
+        <div className={styles['text-container']}>
+          <h1 className={styles['post-title']}>
+            Lorem ipsum dolor sit amet alim consectetur adipisicing elit.
+          </h1>
+          <p className={styles['post-desc']}>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Cupiditate, quam nisi magni ea laborum inventore voluptatum
+            laudantium repellat ducimus unde aspernatur fuga. Quo, accusantium
+            quisquam! Harum unde sit culpa debitis.
+          </p>
+          <button className={styles.button}>Read More</button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Featured;
