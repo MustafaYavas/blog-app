@@ -5,10 +5,19 @@ import styles from './writePage.module.scss';
 import { useState } from 'react';
 import 'react-quill/dist/quill.bubble.css';
 import ReactQuill from 'react-quill';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const WritePage = () => {
+  const { status } = useSession();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
+  const router = useRouter();
+
+  if (status === 'loading') {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+  if (status === 'authenticated') router.push('/');
 
   return (
     <div className={styles.container}>
