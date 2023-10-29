@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Menu.module.scss';
 import MenuPosts from './menuPosts/MenuPosts';
-import MenuCategories from './MenuCategories/MenuCategories';
+import MenuCategories from './menuCategories/MenuCategories';
 
 const Menu = () => {
   return (
