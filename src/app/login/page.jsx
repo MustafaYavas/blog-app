@@ -21,8 +21,6 @@ const LoginPage = () => {
         >
           Sign in with Google
         </div>
-        <div className={styles['social-button']}>Sign in with Github</div>
-        <div className={styles['social-button']}>Sign in with Facebook</div>
       </div>
     </div>
   );

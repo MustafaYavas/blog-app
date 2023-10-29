@@ -22,28 +22,31 @@ const SinglePage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.infoContainer}>
-        <div className={styles.textContainer}>
+      <div className={styles['info-container']}>
+        <div className={styles['text-container']}>
           <h1 className={styles.title}>{data?.title}</h1>
           <div className={styles.user}>
             {data?.user?.image && (
-              <div className={styles.userImageContainer}>
+              <div className={styles['user-text-container']}>
                 <Image
                   src={data.user.image}
                   alt=""
-                  fill
+                  width={50}
+                  height={50}
                   className={styles.avatar}
                 />
               </div>
             )}
-            <div className={styles.userTextContainer}>
+            <div className={styles['user-text-container']}>
               <span className={styles.username}>{data?.user.name}</span>
-              <span className={styles.date}>01.01.2024</span>
+              <span className={styles.date}>
+                {data?.createdAt.substring(0, 10)}
+              </span>
             </div>
           </div>
         </div>
         {data?.img && (
-          <div className={styles.imageContainer}>
+          <div className={styles['image-container']}>
             <Image src={data.img} alt="" fill className={styles.image} />
           </div>
         )}

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import styles from './writePage.module.css';
+import styles from './writePage.module.scss';
 import { useEffect, useState } from 'react';
 import 'react-quill/dist/quill.bubble.css';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from 'firebase/storage';
+import { app } from '@/utils/firebase';
 import ReactQuill from 'react-quill';
 
 const WritePage = () => {
@@ -81,10 +82,10 @@ const WritePage = () => {
       method: 'POST',
       body: JSON.stringify({
         title,
-        desc: value,
+        desc: value.replace(/<(.|\n)*?>/g, ''),
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || 'style', //If not selected, choose the general category
+        catSlug: catSlug || 'style',
       }),
     });
 
@@ -125,21 +126,21 @@ const WritePage = () => {
               onChange={(e) => setFile(e.target.files[0])}
               style={{ display: 'none' }}
             />
-            <button className={styles.addButton}>
+            <button className={styles['add-button']}>
               <label htmlFor="image">
                 <Image src="/image.png" alt="" width={16} height={16} />
               </label>
             </button>
-            <button className={styles.addButton}>
+            <button className={styles['add-button']}>
               <Image src="/external.png" alt="" width={16} height={16} />
             </button>
-            <button className={styles.addButton}>
+            <button className={styles['add-button']}>
               <Image src="/video.png" alt="" width={16} height={16} />
             </button>
           </div>
         )}
         <ReactQuill
-          className={styles.textArea}
+          className={styles['text-area']}
           theme="bubble"
           value={value}
           onChange={setValue}

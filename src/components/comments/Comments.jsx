@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import styles from './comments.module.css';
+import styles from './comments.module.scss';
 import Image from 'next/image';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
@@ -70,9 +70,11 @@ const Comments = ({ postSlug }) => {
                       className={styles.image}
                     />
                   )}
-                  <div className={styles.userInfo}>
+                  <div className={styles['user-info']}>
                     <span className={styles.username}>{item.user.name}</span>
-                    <span className={styles.date}>{item.createdAt}</span>
+                    <span className={styles.date}>
+                      {item.createdAt.substring(0, 10)}
+                    </span>
                   </div>
                 </div>
                 <p className={styles.desc}>{item.desc}</p>
